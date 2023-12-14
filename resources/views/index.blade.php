@@ -16,6 +16,7 @@
         </div>
 
         <hr>
+
         <div class="mt-2">
             @foreach($todos as $todo)
                 <div @class([
