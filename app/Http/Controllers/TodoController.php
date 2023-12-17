@@ -3,34 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\services\ITodoRepositoryService;
+//use App\services\TodoRepositoryService;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+    protected mixed $todoRepository;
+    public function __construct(ITodoRepositoryService $todoRepository)
+    {
+        $this->todoRepository = $todoRepository;
+    }
+
     public function index()
     {
-        $todos = Todo::all();
-        return view('.index',['todos' => $todos]);
+        $todos = $this->todoRepository->getAllTodo();
+        return view('index',['todos' => $todos]);
     }
 
     public function store()
     {
-        $attributes = \request()->validate([
-            'title' => 'required',
-            'description' => 'nullable',
-        ]);
-        Todo::create($attributes);
+        $this->todoRepository->storeTodo();
         return redirect('/');
     }
 
     public function update(Todo $todo)
     {
-        $todo->update(['isDone' => true]);
+        $this->todoRepository->updateTodo($todo);
         return redirect('/');
     }
     public function destroy(Todo $todo)
     {
-        $todo->delete();
+        $this->todoRepository->deleteTodo($todo);
         return redirect('/');
     }
 }
