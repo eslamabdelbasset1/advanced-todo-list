@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\ITodoRepositoryService;
 use App\Models\Todo;
-use App\services\ITodoRepositoryService;
-//use App\services\TodoRepositoryService;
-use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
