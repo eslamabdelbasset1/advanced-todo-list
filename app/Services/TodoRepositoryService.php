@@ -1,7 +1,7 @@
 <?php
 
-namespace App\services;
-
+namespace App\Services;
+use App\Contracts\ITodoRepositoryService;
 use App\Models\Todo;
 
 class TodoRepositoryService implements ITodoRepositoryService
