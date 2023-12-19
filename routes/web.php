@@ -18,3 +18,9 @@ Route::get('/', [TodoController::class, 'index']);
 Route::post('/', [TodoController::class, 'store']);
 Route::patch('/{todo}', [TodoController::class, 'update']);
 Route::delete('/{todo}', [TodoController::class, 'destroy']);
+
+Route::get('/sms', [\App\Http\Controllers\Controller::class, 'index']);
+Route::get('/firewall', [\App\Http\Controllers\FirewallController::class, 'getFilters']);
+
+
+

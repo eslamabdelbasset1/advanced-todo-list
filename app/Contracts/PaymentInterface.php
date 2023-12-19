@@ -9,4 +9,5 @@ interface PaymentInterface
      * @return mixed
      */
     public function pay(float $amount): string;
+//    public function sms();
 }
